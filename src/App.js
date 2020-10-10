@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import InteractiveScene from './components/three/InteractiveScene';
-import Menu from './components/ui/Menu';
+import Menu from './components/ui/menu/Menu';
 
 function App() {
   return (

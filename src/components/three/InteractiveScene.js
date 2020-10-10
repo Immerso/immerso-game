@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import sceneManager from '../managers/SceneManager';
+import "./InteractiveScene.scss"
 
 class InteractiveScene extends Component {
   componentDidMount() {
@@ -7,7 +8,7 @@ class InteractiveScene extends Component {
   }
 
   render() {
-    return <div ref={(ref) => (this.mount = ref)} />;
+    return <div className="interactive-scene" ref={(ref) => (this.mount = ref)} />;
   }
 }
 export default InteractiveScene;

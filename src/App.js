@@ -7,6 +7,7 @@ import Scan from './pages/scan/Scan';
 import Game from './pages/game/Game';
 import Pack from './pages/pack/Pack';
 import Options from './pages/options/Options';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {
   BrowserRouter as Router,

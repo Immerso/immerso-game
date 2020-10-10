@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from "react";
-import lootManager from "../../managers/LootManager";
+import React from "react";
 import "./Scanner.scss";
 import QrReader from 'react-qr-reader'
 import { useHistory } from "react-router-dom";
 
 const Scanner = () => {
-  const [scannedString, setScannedString] = useState("");
   const history = useHistory();
 
   const handleScan = data => {
     if (data) {
-      setScannedString(data);
-      history.push('/pack');
+      history.push({
+        pathname: '/pack',
+        state: { detail: data }
+      });
     }
   }
   const handleError = err => {
@@ -26,7 +26,6 @@ const Scanner = () => {
           onScan={handleScan}
           style={{ width: '100%' }}
         />
-        <p>{scannedString}</p>
     </div>
   );
 };

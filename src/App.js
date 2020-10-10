@@ -2,14 +2,46 @@ import React from 'react';
 import './App.css';
 import InteractiveScene from './components/three/InteractiveScene';
 import Menu from './components/ui/menu/Menu';
+import Play from './pages/play/Play';
+import Scan from './pages/scan/Scan';
+import Game from './pages/game/Game';
+import Pack from './pages/pack/Pack';
+import Options from './pages/options/Options';
 
-function App() {
-  return (
-    <div className="app">
-      <InteractiveScene />
-      <Menu />
-    </div>
-  );
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+export default class App extends React.Component {
+  
+  render () {
+    
+    return (
+        <Router>
+          <InteractiveScene />
+          <Menu />
+          <div className="">
+            <Switch>
+              <Route exact path="/">
+                <Play />
+              </Route>
+              <Route exact path="/game">
+                <Game />
+              </Route>
+              <Route exact path="/options">
+                <Options />
+              </Route>
+              <Route exact path="/scan">
+                <Scan />
+              </Route>
+              <Route exact path="/pack">
+                <Pack />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+    )
+  }
 }
-
-export default App;

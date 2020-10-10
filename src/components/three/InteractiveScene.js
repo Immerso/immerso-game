@@ -3,7 +3,7 @@ import sceneManager from '../managers/SceneManager';
 
 class InteractiveScene extends Component {
   componentDidMount() {
-    sceneManager.initScene(this.mount);
+    sceneManager.init(this.mount);
   }
 
   render() {

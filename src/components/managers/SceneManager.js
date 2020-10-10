@@ -26,7 +26,7 @@ class SceneManager {
     this._camera = value;
   }
 
-  initScene(mount) {
+  init(mount) {
     let scene = new THREE.Scene();
     let camera = new THREE.PerspectiveCamera(
       75,

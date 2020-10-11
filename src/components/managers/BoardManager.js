@@ -32,6 +32,13 @@ class BoardManager {
     }
   }
 
+  CheckWinState(){
+    let won=true;
+    for (let i = 0; i < this.board.length; i++) {
+      won &= this.board[i].card!=null
+    }
+    return won;
+  }
   createBoard(){
     const column= 5;
     const offsetX=-2.2;

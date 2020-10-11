@@ -51,7 +51,10 @@ class Cell {
         this.card=gameManager.selectedCard;
       //boardManager.deleteCard(this.card.id);
         gameManager.selectedCard = null;
-        gameManager.nextState();
+        if (boardManager.CheckWinState()){
+          gameManager.gameUI.setGameState("Has ganado")
+        }
+        else{gameManager.nextState();} 
       }
   }
 }

@@ -28,7 +28,7 @@ class Card {
       card.position.z = position[2];
       scene.add(card);
 
-      // this.card = card;
+      this.card = card;
       },
       
       undefined,

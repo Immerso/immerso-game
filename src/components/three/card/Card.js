@@ -13,7 +13,7 @@ class Card {
     this._card = value;
   }
 
-  init(scene) {
+  init(scene, position) {
     var loader = new THREE.TextureLoader();
     loader.load(
       "card.jpeg",
@@ -22,9 +22,13 @@ class Card {
         var material = new THREE.MeshBasicMaterial({ map: texture });
       
       var geometry = new THREE.PlaneBufferGeometry(3, 4.8, 32);
-      var plane = new THREE.Mesh(geometry, material);
-      scene.add(plane);
+      var card = new THREE.Mesh(geometry, material);
+      card.position.x = position[0];
+      card.position.y = position[1];
+      card.position.z = position[2];
+      scene.add(card);
 
+      // this.card = card;
       },
       
       undefined,

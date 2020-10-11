@@ -12,6 +12,7 @@ class GameManager {
         this.deckManager = deckManager;
         this.sceneManager = sceneManager;
         this.selectedCard = null;
+        this.gameState = "none";
       }
       return GameManager.instance;
     }
@@ -24,8 +25,17 @@ class GameManager {
       this._selectedCard = value;
     }
 
+    get gameState() {
+      return this._gameState;
+    }
+
+    set gameState(value) {
+      this._gameState = value;
+    }
+
     init() {
         handManager.init(["1","2","3"],["1","2","3"]);
+        this.gameState = "player turn";
     }
   }
   

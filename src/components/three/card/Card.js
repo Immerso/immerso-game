@@ -7,6 +7,7 @@ class Card {
     this.loaded = false;
     this.selected = false;
     this.zoomed = false;
+    this.index = null;
   }
 
   get card() {
@@ -33,14 +34,32 @@ class Card {
     this._zoomed = value;
   }
 
+  get loaded() {
+    return this._loaded;
+  }
+
+  set loaded(value) {
+    this._loaded = value;
+  }
+
+  get index() {
+    return this._index;
+  }
+
+  set index(value) {
+    this._index = value;
+  }
+
   selectCard() {
     if(gameManager.selectedCard) gameManager.selectedCard.unselectCard();
     this.selected = true;
+    this.card.position.y += 0.15;
     gameManager.selectedCard = this;
   }
 
   unselectCard() {
     this.selected = false;
+    this.card.position.y -= 0.15;
     if(this.zoomed === true) this.zoomOut();
   }
 
@@ -60,7 +79,8 @@ class Card {
     this.card.position.y -= 1.5;
   }
 
-  createCard(scene, owner, texture, position, scale) {
+  createCard(scene, owner, texture, position, scale, index) {
+    this.index = index;
     var material = new THREE.MeshBasicMaterial({ map: texture });
       
     var geometry = new THREE.PlaneBufferGeometry(scale[0], scale[1], 32);

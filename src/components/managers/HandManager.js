@@ -37,12 +37,12 @@ class HandManager {
 
       this.enemyHand.forEach((element, index) => {
         let card = new Card();
-        card.init(sceneManager.scene, "enemy", [(index + 0.5 - enemyHand.length / 2) * cardXDistance, playerHandYPosition, 0], [1,1.5]);
+        card.init(sceneManager.scene, "enemy", [(index + 0.5 - enemyHand.length / 2) * cardXDistance, playerHandYPosition, 0], [1,1.5], index);
       });
 
       this.hand.forEach((element, index) => {
         let card = new Card();
-        card.init(sceneManager.scene, "player", [(index + 0.5 - hand.length / 2) * cardXDistance, enemyHandYPosition, 0], [1,1.5]);
+        card.init(sceneManager.scene, "player", [(index + 0.5 - hand.length / 2) * cardXDistance, enemyHandYPosition, 0], [1,1.5], index);
       });
     }
   }

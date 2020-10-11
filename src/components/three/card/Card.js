@@ -83,7 +83,7 @@ class Card {
     this.index = index;
     var material = new THREE.MeshBasicMaterial({ map: texture });
       
-    var geometry = new THREE.PlaneBufferGeometry(scale[0], scale[1], 32);
+    var geometry = new THREE.PlaneBufferGeometry(scale[0], scale[1], 1);
     var card = new THREE.Mesh(geometry, material);
     card.position.x = position[0];
     card.position.y = position[1];

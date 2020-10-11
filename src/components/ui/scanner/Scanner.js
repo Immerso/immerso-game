@@ -10,7 +10,7 @@ const Scanner = () => {
     if (data) {
       history.push({
         pathname: '/pack',
-        state: { detail: data }
+        search: data
       });
     }
   }

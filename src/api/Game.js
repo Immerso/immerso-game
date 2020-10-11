@@ -16,6 +16,12 @@ export class GameAPI {
     });
   }
 
+  async openPack(code){
+    return await axios.put(this.base_url + "/api/user/open/", {
+      code
+    });
+  }
+
   gameCommunicationConnect(on_open, on_message, on_error, user_id) {
     this.userId = user_id;
     this.fullUrl = `${this.base_ws_url}/ws/${this.userId}/`;

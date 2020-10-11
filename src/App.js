@@ -9,6 +9,7 @@ import Search from './pages/search/Search';
 import Options from './pages/options/Options';
 import Home from './pages/home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from "axios";
 
 import {
   BrowserRouter as Router,
@@ -30,8 +31,13 @@ export default class App extends React.Component {
         .then((data) => {
           console.log(data);
           localStorage.setItem("user", JSON.stringify(data));
+          axios.defaults.headers.common['Authorization'] = `Basic ${btoa(data.data.username + ":qwerty12345")}`;
+          console.log(`Basic ${btoa(data.data.username + ":qwerty12345")}`);
         })
         .catch(console.error);
+    }else{
+      axios.defaults.headers.common['Authorization'] = `Basic ${btoa(user.data.username + ":qwerty12345")}`;
+      console.log(`Basic ${btoa(user.data.username + ":qwerty12345")}`);
     }
 
   }

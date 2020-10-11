@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import deckManager from '../../managers/DeckManager';
-import gameManager from '../../managers/GameManager';
 
 class Deck {
   constructor() {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import gameManager from '../../managers/GameManager';
 import sceneManager from '../../managers/SceneManager';
 import "./InteractiveScene.scss"
 

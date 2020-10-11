@@ -3,11 +3,13 @@ import gameManager from "../../managers/GameManager";
 import "./GameUI.scss";
 
 const GameUI = () => {
-    const [gameState, setGameState] = useState("default");
+    const [gameState, setGameState] = useState(gameManager.gameState);
 
     useEffect(() => {
-        setGameState(gameManager.gameState);
-    }, [gameManager.gameState]);
+        gameManager.gameUI = {
+          setGameState: setGameState
+        }
+    }, []);
 
   return (
     <div className="game">

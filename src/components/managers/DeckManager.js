@@ -1,5 +1,6 @@
 import Card from "../three/card/Card";
 import Deck from "../three/deck/Deck";
+import gameManager from "./GameManager";
 import handManager from "./HandManager";
 import sceneManager from "./SceneManager";
 
@@ -37,11 +38,13 @@ class DeckManager {
     }
 
     grabCard() {
-      let cardId = this.cards.pop();
-      let card = new Card();
-      card.init(sceneManager.scene, "player", [(handManager.hand.length - handManager.hand.length / 2) * 1, handManager.playerHandYPosition, 0], [1,1.5], handManager.hand.length);
-      handManager.hand.push(card);
-      handManager.reorderHand();
+      if(gameManager.gameState === gameManager.GAME_STATES.TAKE) {
+        let card = new Card();
+        card.init(sceneManager.scene, "player", [(handManager.hand.length - handManager.hand.length / 2) * 1, handManager.playerHandYPosition, 0], [1,1.5], handManager.hand.length);
+        handManager.hand.push(card);
+        handManager.reorderHand();
+        gameManager.nextState();
+      }
     }
 
   }

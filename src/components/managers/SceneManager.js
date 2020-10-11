@@ -39,7 +39,6 @@ class SceneManager {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor( 0xffffff, 0);
     mount.appendChild(renderer.domElement);
-    let loader = new THREE.TextureLoader();
 
     // Responsiveness
     const onWindowResize = () => {
@@ -52,7 +51,7 @@ class SceneManager {
     // Set Managers Info
     this.scene = scene;
     this.camera = camera;
-    const interaction = new Interaction(renderer, scene, camera);
+    new Interaction(renderer, scene, camera);
 
     // Start Simulation
     const cameraDistance = 5;

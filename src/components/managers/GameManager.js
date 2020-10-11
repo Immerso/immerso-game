@@ -7,13 +7,19 @@ class GameManager {
     constructor() {
       if (!GameManager.instance) {
         this._data = [];
+        this.GAME_STATES = {
+          TAKE: "Take a card",
+          PLAY: "Play a card",
+          NEXT: "Opponent turn"
+        };
         this.initiated = false;
         this.boardManager = boardManager;
         this.handManager = handManager;
         this.deckManager = deckManager;
         this.sceneManager = sceneManager;
         this.selectedCard = null;
-        this.gameState = "p1-start";
+        this.gameState = this.GAME_STATES.TAKE;
+        this.gameUI = null;
       }
       return GameManager.instance;
     }
@@ -32,6 +38,14 @@ class GameManager {
 
     set gameState(value) {
       this._gameState = value;
+    }
+
+    get gameUI() {
+      return this._gameUI;
+    }
+
+    set gameUI(value) {
+      this._gameUI = value;
     }
 
     hide() {
@@ -75,8 +89,25 @@ class GameManager {
     init() {
         handManager.init(["1","2","3"],["1","2","3"]);
         deckManager.init();
-        this.gameState = "p1-start";
+        this.gameState = this.GAME_STATES.TAKE;
         boardManager.createBoard();
+    }
+
+    nextState() {
+      switch(this.gameState){
+        case this.GAME_STATES.TAKE:
+          this.gameState = this.GAME_STATES.PLAY;
+          break;
+        case this.GAME_STATES.PLAY:
+          this.gameState = this.GAME_STATES.TAKE;
+          break;
+        case this.GAME_STATES.NEXT:
+          this.gameState = this.GAME_STATES.TAKE;
+          break;
+        default:
+          break;
+      }
+      this.gameUI.setGameState(this.gameState);
     }
   }
   

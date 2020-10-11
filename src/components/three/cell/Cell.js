@@ -34,10 +34,14 @@ class Cell {
   }
 
   selectCell() {
-    if(gameManager.selectedCard) {
-      gameManager.selectedCard.unselectCard();
-      gameManager.selectedCard.playCard(this.cell.position.x, this.cell.position.y, 0.1);
-      gameManager.selectedCard = null;
+    if(gameManager.gameState === gameManager.GAME_STATES.PLAY) {
+
+      if(gameManager.selectedCard) {
+        gameManager.selectedCard.unselectCard();
+        gameManager.selectedCard.playCard(this.cell.position.x, this.cell.position.y, 0.1);
+        gameManager.selectedCard = null;
+        gameManager.nextState();
+      }
     }
   }
 

@@ -10,7 +10,16 @@ class Card {
     this.loaded = false;
     this.selected = false;
     this.zoomed = false;
+    this.played = false;
     this.id = null;
+  }
+
+  get played() {
+    return this._played;
+  }
+
+  set played(value) {
+    this._played = value;
   }
 
   get card() {

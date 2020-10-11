@@ -44,7 +44,8 @@ class Cell {
 
   selectCell() {
     if(gameManager.gameState === gameManager.GAME_STATES.PLAY) {
-      if(gameManager.selectedCard) {
+      if(gameManager.selectedCard && gameManager.selectedCard.played === false) {
+        gameManager.selectedCard.played = true;
         gameManager.selectedCard.unselectCard();
         gameManager.selectedCard.playCard(this.cell.position.x, this.cell.position.y, 0.1);
         this.card=gameManager.selectedCard;

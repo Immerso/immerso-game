@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { Interaction } from 'three.interaction';
 
 class SceneManager {
   constructor() {
@@ -51,6 +52,7 @@ class SceneManager {
     // Set Managers Info
     this.scene = scene;
     this.camera = camera;
+    const interaction = new Interaction(renderer, scene, camera);
 
     // Start Simulation
     const cameraDistance = 5;

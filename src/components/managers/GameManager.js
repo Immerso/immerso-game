@@ -2,7 +2,6 @@ import handManager from './HandManager';
 import boardManager from './BoardManager';
 import deckManager from './DeckManager';
 import sceneManager from './SceneManager';
-import Card from '../three/card/Card';
 
 class GameManager {
     constructor() {
@@ -12,17 +11,21 @@ class GameManager {
         this.handManager = handManager;
         this.deckManager = deckManager;
         this.sceneManager = sceneManager;
+        this.selectedCard = null;
       }
       return GameManager.instance;
     }
 
+    get selectedCard() {
+      return this._selectedCard;
+    }
+
+    set selectedCard(value) {
+      this._selectedCard = value;
+    }
+
     init() {
-        let card = new Card();
-        card.init(sceneManager.scene, [0, 0, 0]);
-        let card1 = new Card();
-        card1.init(sceneManager.scene, [-3, 0, 0]);
-        let card2 = new Card();
-        card2.init(sceneManager.scene, [3, 0, 0]);
+        handManager.init(["1","2","3"],["1","2","3"]);
     }
   }
   

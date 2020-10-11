@@ -13,7 +13,8 @@
     "react-qr-reader": "^2.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "three": "^0.121.1"
+    "three": "^0.121.1",
+    "three.interaction": "^0.2.3"
   },
   "scripts": {
     "start": "react-scripts start",

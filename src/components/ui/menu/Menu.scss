@@ -1,11 +1,24 @@
 .menu {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
-    background-color: gray;
+    background-color:#202945;
+    color: #fff;
 
     .navbar-btn {
         height: 5rem;
         width: 10rem;
+        background: none;
+        border: none;
+        color: #ffffff
+    }
+    .center-btn{
+        color: #fff;
+        width: 5rem;
+        height: 5rem;
+        border-color: #00F0A1;
+        border-style: outset;
+        background: darkgray;
+        border-radius: 50%
     }
 }

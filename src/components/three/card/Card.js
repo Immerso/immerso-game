@@ -14,11 +14,25 @@ class Card {
   }
 
   init(scene) {
-    var geometry = new THREE.PlaneGeometry( 5, 20, 32 );
-    var material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
-    var card = new THREE.Mesh( geometry, material );
-    scene.add( card );
-    this.card = card;
+    var loader = new THREE.TextureLoader();
+    loader.load(
+      "card.jpeg",
+      
+      function (texture) {
+        var material = new THREE.MeshBasicMaterial({ map: texture });
+      
+      var geometry = new THREE.PlaneBufferGeometry(3, 4.8, 32);
+      var plane = new THREE.Mesh(geometry, material);
+      scene.add(plane);
+
+      },
+      
+      undefined,
+
+      function ( err ) {
+        console.error( 'An error happened.' );
+      }
+    );
   }
 }
 

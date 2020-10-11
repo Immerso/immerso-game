@@ -36,6 +36,7 @@ class SceneManager {
     );
     let renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor( 0xffffff, 0);
     mount.appendChild(renderer.domElement);
     let loader = new THREE.TextureLoader();
 

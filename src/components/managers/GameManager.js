@@ -93,6 +93,10 @@ class GameManager {
         boardManager.createBoard();
     }
 
+    createPowerSpace() {
+
+    }
+
     nextState() {
       switch(this.gameState){
         case this.GAME_STATES.TAKE:

@@ -10,6 +10,7 @@ class Card {
     this.selected = false;
     this.zoomed = false;
     this.played = false;
+    this.lastPos = { x: 0,  y: 0};
     this.id = null;
   }
 
@@ -19,6 +20,14 @@ class Card {
 
   set type(value) {
     this._type = value;
+  }
+
+  get lastPos() {
+    return this._lastPos;
+  }
+
+  set lastPos(value) {
+    this._lastPos = value;
   }
 
   get played() {
@@ -87,7 +96,9 @@ class Card {
     this.card.scale.x *= 2;
     this.card.scale.y *= 2;
     this.card.position.z += 1;
-    this.card.position.y += 1.5;
+    this.lastPos = {x: this.card.position.x, y: this.card.position.y};
+    this.card.position.y = 0;
+    this.card.position.x = 0;
   }
 
   zoomOut() {
@@ -95,7 +106,8 @@ class Card {
     this.card.scale.x /= 2;
     this.card.scale.y /= 2;
     this.card.position.z -= 1;
-    this.card.position.y -= 1.5;
+    this.card.position.y = this.lastPos.y;
+    this.card.position.x = this.lastPos.x;
   }
 
   playCard(x, y, z) {
@@ -137,13 +149,16 @@ class Card {
     this.loaded = true;
   }
 
-  init(scene, owner, position, scale, id, type = "experience") {
+  init(scene, owner, position, scale, id, type = "power") {
     this.id = id;
     this.type = type;
     let img = "";
-    
+
     switch (type) {
       case "experience":
+        img = "card.jpeg";
+        break;
+      case "power":
         img = "card.jpeg";
         break;
     }

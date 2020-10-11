@@ -2,6 +2,7 @@ import handManager from './HandManager';
 import boardManager from './BoardManager';
 import deckManager from './DeckManager';
 import sceneManager from './SceneManager';
+import PowerSpace from '../three/powerSpace/PowerSpace';
 
 class GameManager {
     constructor() {
@@ -91,10 +92,8 @@ class GameManager {
         deckManager.init();
         this.gameState = this.GAME_STATES.TAKE;
         boardManager.createBoard();
-    }
-
-    createPowerSpace() {
-
+        const powerSpace = new PowerSpace();
+        powerSpace.init(sceneManager.scene);
     }
 
     nextState() {

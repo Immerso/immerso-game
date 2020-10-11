@@ -37,6 +37,7 @@ class GameManager {
         handManager.init(["1","2","3"],["1","2","3"]);
         deckManager.init();
         this.gameState = "player turn: grab a card";
+        boardManager.createBoard();
     }
   }
   

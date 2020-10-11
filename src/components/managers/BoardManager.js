@@ -6,17 +6,17 @@ class BoardManager {
   constructor() {
     if (!BoardManager.instance) {
       this._data = [];
-      this.Listcard=[];
+      this.cells=[];
     }
     return BoardManager.instance;
   }
 
-  /*PopCard(Index){
-    this.Listcard.remove(Index)
-  }*/
+  get cells() {
+    return this._cells;
+  }
 
-  PushCard(){
-
+  set cells(value) {
+    this._cells = value;
   }
 
   createBoard(){
@@ -31,6 +31,7 @@ class BoardManager {
       for (let x = 0; x < column; x++) {
         let cell = new Cell();
         cell.init(sceneManager.scene, [offsetX+stepX*x, offsetY-stepY*y, 0], [1,1.5],x,y);
+        this.cells.push(cell);
       }
       
     }

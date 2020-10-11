@@ -6,7 +6,6 @@ import "./InteractiveScene.scss"
 class InteractiveScene extends Component {
   componentDidMount() {
     sceneManager.init(this.mount);
-    gameManager.init();
   }
 
   render() {

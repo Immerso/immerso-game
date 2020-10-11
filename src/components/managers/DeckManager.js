@@ -8,22 +8,31 @@ class DeckManager {
       if (!DeckManager.instance) {
         this._data = [];
         this.cards = null;
+        this.deck = null;
       }
       return DeckManager.instance;
     }
 
     get cards() {
-      return this._card;
+      return this._cards;
     }
   
     set cards(value) {
-      this._card = value;
+      this._cards = value;
+    }
+
+    get deck() {
+      return this._deck;
+    }
+  
+    set deck(value) {
+      this._deck = value;
     }
 
     init() {
       const deck = new Deck();
       deck.init(sceneManager.scene);
-
+      this.deck = deck;
       this.cards = ["","",""];
     }
 

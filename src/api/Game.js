@@ -16,7 +16,7 @@ export class GameAPI {
         this.gameCommunicationSend(
           {search: true, type: "action"}
         );
-      }, 1000);
+      }, 5000);
     } catch (e) {
 
     }

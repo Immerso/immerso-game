@@ -1,5 +1,6 @@
 import Card from '../three/card/Card';
 import sceneManager from './SceneManager';
+import { v4 as uuidv4 } from 'uuid';
 
 class HandManager {
     constructor() {
@@ -43,13 +44,13 @@ class HandManager {
 
       enemyHand.forEach((element, index) => {
         let card = new Card();
-        card.init(sceneManager.scene, "enemy", [(index + 0.5 - enemyHand.length / 2) * cardXDistance, enemyHandYPosition, 0], [1,1.5], index);
+        card.init(sceneManager.scene, "enemy", [(index + 0.5 - enemyHand.length / 2) * cardXDistance, enemyHandYPosition, 0], [1,1.5], uuidv4());
         this.enemyHand.push(card);
       });
 
       hand.forEach((element, index) => {
         let card = new Card();
-        card.init(sceneManager.scene, "player", [(index + 0.5 - hand.length / 2) * cardXDistance, this.playerHandYPosition, 0], [1,1.5], index);
+        card.init(sceneManager.scene, "player", [(index + 0.5 - hand.length / 2) * cardXDistance, this.playerHandYPosition, 0], [1,1.5], uuidv4());
         this.hand.push(card);
       });
     }

@@ -7,11 +7,20 @@ import Cell from '../cell/Cell';
 class Card {
   constructor() {
     this.card = null;
+    this.type = null;
     this.loaded = false;
     this.selected = false;
     this.zoomed = false;
     this.played = false;
     this.id = null;
+  }
+
+  get type() {
+    return this._type;
+  }
+
+  set type(value) {
+    this._type = value;
   }
 
   get played() {
@@ -130,11 +139,20 @@ class Card {
     this.loaded = true;
   }
 
-  init(scene, owner, position, scale, id) {
+  init(scene, owner, position, scale, id, type = "experience") {
     this.id = id;
+    this.type = type;
+    let img = "";
+    
+    switch (type) {
+      case "experience":
+        img = "card.jpeg";
+        break;
+    }
+
     var loader = new THREE.TextureLoader();
     loader.load(
-      "card.jpeg",
+      img,
       
       (texture) => this.createCard(scene, owner, texture, position, scale)
       ,

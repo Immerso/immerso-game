@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import gameManager from '../../managers/GameManager';
 
 
 class Cell {
@@ -32,6 +33,14 @@ class Cell {
     this._boardPosY = value;
   }
 
+  selectCell() {
+    if(gameManager.selectedCard) {
+      gameManager.selectedCard.unselectCard();
+      gameManager.selectedCard.playCard(this.cell.position.x, this.cell.position.y, 0.1);
+      gameManager.selectedCard = null;
+    }
+  }
+
   createCell(scene, position, scale) {
     
     var material = new THREE.MeshBasicMaterial({ color:"rgb(220,220,220)" ,wireframe: true});
@@ -41,6 +50,11 @@ class Cell {
     cell.position.x = position[0];
     cell.position.y = position[1];
     cell.position.z = position[2];
+
+    cell.cursor = 'pointer';
+    cell.on('click', () => {
+      this.selectCell();
+    });
 
     scene.add(cell);
     this.cell = cell;

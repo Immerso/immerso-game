@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import gameManager from '../../managers/GameManager';
+import boardManager from '../../managers/BoardManager';
 
 
 class Cell {
@@ -7,6 +8,7 @@ class Cell {
     this.cell = null;
     this.boardPosX=null;
     this.boardPosY=null;
+    this.card=null;
   }
 
   get cell() {
@@ -17,6 +19,14 @@ class Cell {
     this._cell = value;
   }
 
+  get card() {
+    return this._card;
+  }
+
+  set card(value) {
+    this._card = value;
+  }
+
   get boardPosX() {
     return this._boardPosX;
   }
@@ -24,7 +34,6 @@ class Cell {
   set boardPosX(value) {
     this._boardPosX = value;
   }
-
   get boardPosY() {
     return this._boardPosY;
   }
@@ -35,17 +44,17 @@ class Cell {
 
   selectCell() {
     if(gameManager.gameState === gameManager.GAME_STATES.PLAY) {
-
       if(gameManager.selectedCard) {
         gameManager.selectedCard.unselectCard();
         gameManager.selectedCard.playCard(this.cell.position.x, this.cell.position.y, 0.1);
+        this.card=gameManager.selectedCard;
+      //boardManager.deleteCard(this.card.id);
         gameManager.selectedCard = null;
         gameManager.nextState();
       }
-    }
   }
 
-  createCell(scene, position, scale) {
+  createCell(scene,owner, position, scale) {
     
     var material = new THREE.MeshBasicMaterial({ color:"rgb(220,220,220)" ,wireframe: true});
 
@@ -55,19 +64,21 @@ class Cell {
     cell.position.y = position[1];
     cell.position.z = position[2];
 
-    cell.cursor = 'pointer';
-    cell.on('click', () => {
+    if(owner === "player"){
+      cell.cursor = 'pointer';
+      cell.on('click', () => {
       this.selectCell();
-    });
+      });
+    }
 
     scene.add(cell);
     this.cell = cell;
   }
 
-  init(scene, position, scale, boardPosX,boardPosY) {
+  init(scene, owner,position, scale, boardPosX,boardPosY) {
     this.boardPosX=boardPosX;
     this.boardPosY=boardPosY;
-    this.createCell(scene, position, scale)
+    this.createCell(scene,owner, position, scale)
     
   }
 }

@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import gameManager from '../../managers/GameManager';
 import handManager from '../../managers/HandManager';
+import boardManager from '../../managers/BoardManager';
+import Cell from '../cell/Cell';
 
 class Card {
   constructor() {

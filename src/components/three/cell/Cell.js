@@ -53,6 +53,7 @@ class Cell {
         gameManager.nextState();
       }
   }
+}
 
   createCell(scene,owner, position, scale) {
     
@@ -67,7 +68,7 @@ class Cell {
     if(owner === "player"){
       cell.cursor = 'pointer';
       cell.on('click', () => {
-      this.selectCell();
+        this.selectCell();
       });
     }
 

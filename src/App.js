@@ -15,8 +15,26 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import {GameAPI} from "./api/Game";
 
 export default class App extends React.Component {
+
+  componentDidMount() {
+    let api = new GameAPI();
+    let userName;
+    let user = JSON.parse(localStorage.getItem("user"));
+    console.log(user);
+    if(user === null){
+      userName = window.prompt("Tu nombre de usuario: ");
+      api.createRandomUser(userName)
+        .then((data) => {
+          console.log(data);
+          localStorage.setItem("user", JSON.stringify(data));
+        })
+        .catch(console.error);
+    }
+
+  }
 
   render () {
 

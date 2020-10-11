@@ -1,15 +1,21 @@
 import React, {useEffect, useState} from "react";
 import "./Search.scss";
 import {GameAPI} from "../../api/Game";
+import App from "../../App";
+import {useHistory} from "react-router-dom";
 
 const Search = () => {
   let [foundMatch, setFoundMatch] = useState(false);
   let [opponent, setOpponent] = useState();
   let api = new GameAPI();
+  let user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
 
   useEffect(() => {
+    if(user === null){
+      window.location.href = "/";
+    }
     if(api.userId === undefined){
-      let isPlayer1 = window.confirm("¿Eres jugador 1?");
       api.gameCommunicationConnect(
         () => {
           console.log("WS Connection established...");
@@ -27,8 +33,7 @@ const Search = () => {
         },
         (error) => {
           console.error(error);
-        },
-        isPlayer1 ? 1 : 2);
+        }, user.data.id);
 
     }
   }, ["foundMatch"]);

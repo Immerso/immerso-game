@@ -1,10 +1,19 @@
 import {w3cwebsocket as W3CWebSocket} from "websocket";
+import axios from "axios";
 
 export class GameAPI {
 
   constructor() {
     this.base_url = "https://dry-temple-99567.herokuapp.com";
     this.base_ws_url = "wss://dry-temple-99567.herokuapp.com";
+  }
+
+  async createRandomUser(username){
+    return await axios.post(this.base_url + "/api/user/register/", {
+      username,
+      first_name: username,
+      password: "qwerty12345"
+    });
   }
 
   gameCommunicationConnect(on_open, on_message, on_error, user_id) {
@@ -16,7 +25,7 @@ export class GameAPI {
         this.gameCommunicationSend(
           {search: true, type: "action"}
         );
-      }, 1000);
+      }, 5000);
     } catch (e) {
 
     }
@@ -39,8 +48,8 @@ export class GameAPI {
 
   reconnect() {
     this.closeGameCommunication();
-    this.gameCommunicationConnect(
-      this.client.onopen, this.client.onmessage, this.client.onerror, this.userId
-    );
+    // this.gameCommunicationConnect(
+    //   this.client.onopen, this.client.onmessage, this.client.onerror, this.userId
+    // );
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import InteractiveScene from './components/three/InteractiveScene';
+import InteractiveScene from './components/three/interactiveScene/InteractiveScene';
 import Menu from './components/ui/menu/Menu';
 import Play from './pages/play/Play';
 import Scan from './pages/scan/Scan';

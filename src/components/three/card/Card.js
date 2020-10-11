@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import gameManager from '../../managers/GameManager';
+import handManager from '../../managers/HandManager';
 
 class Card {
   constructor() {
@@ -7,7 +8,7 @@ class Card {
     this.loaded = false;
     this.selected = false;
     this.zoomed = false;
-    this.index = null;
+    this.id = null;
   }
 
   get card() {
@@ -42,12 +43,12 @@ class Card {
     this._loaded = value;
   }
 
-  get index() {
-    return this._index;
+  get id() {
+    return this._id;
   }
 
-  set index(value) {
-    this._index = value;
+  set id(value) {
+    this._id = value;
   }
 
   selectCard() {
@@ -79,8 +80,17 @@ class Card {
     this.card.position.y -= 1.5;
   }
 
-  createCard(scene, owner, texture, position, scale, index) {
-    this.index = index;
+  playCard(x, y, z) {
+    handManager.hand = handManager.hand.filter(card => {
+      return card.id !== this.id
+    });
+
+    this.card.position.x = x;
+    this.card.position.y = y;
+    this.card.position.z = z;
+  }
+
+  createCard(scene, owner, texture, position, scale) {
     var material = new THREE.MeshBasicMaterial({ map: texture });
       
     var geometry = new THREE.PlaneBufferGeometry(scale[0], scale[1], 1);
@@ -109,7 +119,8 @@ class Card {
     this.loaded = true;
   }
 
-  init(scene, owner, position, scale) {
+  init(scene, owner, position, scale, id) {
+    this.id = id;
     var loader = new THREE.TextureLoader();
     loader.load(
       "card.jpeg",

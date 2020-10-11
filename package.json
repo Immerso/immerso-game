@@ -16,6 +16,7 @@
     "three": "^0.121.1",
     "three.interaction": "^0.2.3",
     "websocket": "^1.0.32"
+    "uuid": "^8.3.1"
   },
   "scripts": {
     "start": "react-scripts start",

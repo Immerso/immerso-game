@@ -2,12 +2,12 @@ import React from 'react';
 import './App.css';
 import InteractiveScene from './components/three/interactiveScene/InteractiveScene';
 import Menu from './components/ui/menu/Menu';
-import Play from './pages/play/Play';
 import Scan from './pages/scan/Scan';
 import Game from './pages/game/Game';
 import Pack from './pages/pack/Pack';
 import Search from './pages/search/Search';
 import Options from './pages/options/Options';
+import Home from './pages/home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {
@@ -27,7 +27,7 @@ export default class App extends React.Component {
           <div className="">
             <Switch>
               <Route exact path="/">
-                <Play />
+                <Home />
               </Route>
               <Route exact path="/search">
                 <Search />

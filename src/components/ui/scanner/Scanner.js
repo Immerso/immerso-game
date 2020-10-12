@@ -19,13 +19,15 @@ const Scanner = () => {
   }
 
   return (
-    <div className="scanner">
+    <div className="scanner w-100 d-flex justify-content-center">
+      <div className="w-50">
         <QrReader
-          delay={300}
-          onError={handleError}
-          onScan={handleScan}
-          style={{ width: '100%' }}
-        />
+            delay={300}
+            onError={handleError}
+            onScan={handleScan}
+            style={{ width: '100%' }}
+          />
+      </div>
     </div>
   );
 };

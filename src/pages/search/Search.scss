@@ -1,4 +1,18 @@
 .search{
+  padding-left: 10%;
+  padding-top: 3em;
+  position: absolute;
+  top:0;
+  color: #ffff;
+  width:30%;
+  height: 30%;
+  margin-left: 34%;
+  margin-top: 10%;
+  background-color: #46506A;
+  opacity: 0.7;
+  border-radius: 1em ;  
+  text-align: center;
+  
   .loader {
     border: 16px solid #f3f3f3;
     border-radius: 50%;
@@ -7,6 +21,8 @@
     height: 120px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
+  
+
   }
 
   /* Safari */

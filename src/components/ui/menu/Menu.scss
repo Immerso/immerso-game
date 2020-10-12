@@ -1,11 +1,13 @@
+
 .menu {
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color:#202945;
+    background-color:#5BBADF;
     color: #fff;
 
     .navbar-btn {
+        margin-top: 0.5rem;
         height: 5rem;
         width: 10rem;
         background: none;
@@ -13,12 +15,14 @@
         color: #ffffff
     }
     .center-btn{
+        
+        margin-bottom: 0.5rem;
         color: #fff;
         width: 5rem;
         height: 5rem;
-        border-color: #00F0A1;
-        border-style: outset;
-        background: darkgray;
+        border-color: #FFF;
+        border-style: solid;
+        background: #5BBADF;
         border-radius: 50%
     }
 }

@@ -42,10 +42,16 @@ const Search = () => {
     }
   }, ["foundMatch"]);
 
+  const removeLoader=()=>{
+    document.getElementById("mytext").style.display = "none";
+
+  }
+
   return (
-    <div className="search">
+    <div className="search" id="mytext">
+      <p style={{top: '0', position: 'absolute',aling: 'center'}} > Esperando otro jugador...</p>
       {
-        foundMatch ? <Game/> : <div/>
+        foundMatch ? ( removeLoader(), <Game/>)  : <div className = "loader"  />
       }
     </div>
   );

@@ -57,9 +57,9 @@ export default class App extends React.Component {
               <Route exact path="/search">
                 <Search />
               </Route>
-              <Route exact path="/game">
-                <Game />
-              </Route>
+              {/*<Route exact path="/game">*/}
+              {/*  <Game />*/}
+              {/*</Route>*/}
               <Route exact path="/options">
                 <Options />
               </Route>

@@ -18,6 +18,7 @@ class GameManager {
         this.handManager = handManager;
         this.deckManager = deckManager;
         this.sceneManager = sceneManager;
+        this._api = null;
         this.selectedCard = null;
         this.gameState = this.GAME_STATES.TAKE;
         this.gameUI = null;

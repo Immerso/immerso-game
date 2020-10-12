@@ -48,7 +48,7 @@ class Cell {
         gameManager.selectedCard.played = true;
         gameManager.selectedCard.unselectCard();
         gameManager.selectedCard.playCard(this.cell.position.x, this.cell.position.y, 0.1);
-        this.card=gameManager.selectedCard;
+        this.card = gameManager.selectedCard;
       //boardManager.deleteCard(this.card.id);
         gameManager.selectedCard = null;
         if (boardManager.CheckWinState()){

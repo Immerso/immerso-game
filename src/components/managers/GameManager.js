@@ -18,6 +18,7 @@ class GameManager {
         this.handManager = handManager;
         this.deckManager = deckManager;
         this.sceneManager = sceneManager;
+        this._api = null;
         this.selectedCard = null;
         this.gameState = this.GAME_STATES.TAKE;
         this.gameUI = null;
@@ -25,8 +26,16 @@ class GameManager {
       return GameManager.instance;
     }
 
-    get selectedCard() {
-      return this._selectedCard;
+  get selectedCard() {
+    return this._selectedCard;
+  }
+
+    set gameAPI(value) {
+      this._api = value;
+    }
+
+    get gameAPI() {
+      return this._api;
     }
 
     set selectedCard(value) {

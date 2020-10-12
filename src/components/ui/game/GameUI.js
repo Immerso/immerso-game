@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import gameManager from "../../managers/GameManager";
 import "./GameUI.scss";
 
-const GameUI = () => {
+const GameUI = (props) => {
     const [gameState, setGameState] = useState(gameManager.gameState);
 
     useEffect(() => {

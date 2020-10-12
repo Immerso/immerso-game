@@ -4,8 +4,8 @@ import axios from "axios";
 export class GameAPI {
 
   constructor() {
-    this.base_url = "https://dry-temple-99567.herokuapp.com";
-    this.base_ws_url = "wss://dry-temple-99567.herokuapp.com";
+    this.base_url = "http://localhost:8000";
+    this.base_ws_url = "ws://localhost:8000";
   }
 
   async createRandomUser(username){
@@ -27,16 +27,17 @@ export class GameAPI {
     this.fullUrl = `${this.base_ws_url}/ws/${this.userId}/`;
     try {
       this.client = new W3CWebSocket(this.fullUrl);
-      this.gameCommunicationSend(
-        {search: true, type: "action"}
-      );
       this.interval = setInterval(() => {
-        this.gameCommunicationSend(
-          {search: true, type: "action"}
-        );
+        if (parseInt(this.client.readyState) === 1) {
+          this.gameCommunicationSend(
+            {search: true, type: "action"}
+          );
+        } else {
+          clearInterval(this.interval);
+        }
       }, 5000);
     } catch (e) {
-
+      console.error(e)
     }
     this.client.onopen = on_open;
     this.client.onmessage = on_message;
@@ -44,11 +45,7 @@ export class GameAPI {
   }
 
   async gameCommunicationSend(message) {
-    if (parseInt(this.client.readyState) === 1) {
-      await this.client.send(JSON.stringify(message));
-    } else {
-      this.reconnect();
-    }
+    await this.client.send(JSON.stringify(message));
   }
 
   closeGameCommunication() {

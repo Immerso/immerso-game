@@ -35,7 +35,7 @@ class PowerSpace {
     powerSpace.position.x = 4;
     powerSpace.position.y = 0.3;
     powerSpace.position.z = 0;
-
+    
     powerSpace.cursor = 'pointer';
     powerSpace.on('click', () => {
       this.playPower();
@@ -43,6 +43,7 @@ class PowerSpace {
 
     scene.add(powerSpace);
     this.powerSpace = powerSpace;
+    gameManager.playerPowerSpace = this;
   }
 
   init(scene) {

@@ -151,7 +151,7 @@ class Card {
     this.loaded = true;
   }
 
-  init(scene, owner, position, scale, id, type = "power") {
+  init(scene, owner, position, scale, id, type = "experience") {
     this.id = id;
     this.type = type;
     let img = "";

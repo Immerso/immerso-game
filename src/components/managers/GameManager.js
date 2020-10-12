@@ -58,7 +58,11 @@ class GameManager {
         if(element.card) element.card.visible = false;
       });
 
-      boardManager.cells.forEach(element => {
+      boardManager.playerCells.forEach(element => {
+        if(element.cell) element.cell.visible = false;
+      });
+
+      boardManager.enemyCells.forEach(element => {
         if(element.cell) element.cell.visible = false;
       });
 
@@ -80,7 +84,11 @@ class GameManager {
           if(element.card) element.card.visible = true;
         });
 
-        boardManager.cells.forEach(element => {
+        boardManager.playerCells.forEach(element => {
+          if(element.cell) element.cell.visible = true;
+        });
+
+        boardManager.enemyCells.forEach(element => {
           if(element.cell) element.cell.visible = true;
         });
 
@@ -93,6 +101,7 @@ class GameManager {
         deckManager.init();
         this.gameState = this.GAME_STATES.TAKE;
         boardManager.createBoard();
+
         const powerSpace = new PowerSpace();
         powerSpace.init(sceneManager.scene);
     }

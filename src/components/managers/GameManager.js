@@ -100,7 +100,6 @@ class GameManager {
         deckManager.init();
         this.gameState = this.GAME_STATES.TAKE;
         boardManager.createBoard();
-        console.log(boardManager.playerCells)
 
         const powerSpace = new PowerSpace();
         powerSpace.init(sceneManager.scene);

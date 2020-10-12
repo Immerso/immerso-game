@@ -57,13 +57,13 @@ class BoardManager {
 
     for (let x = 0; x < pos; x++) {
       let cell = new Cell();
-      cell.init(sceneManager.scene, [offsetX+stepX*x, offsetY, 0], [1,1.5],x,0);
+      cell.init(sceneManager.scene, "player", [offsetX+stepX*x, offsetY, 0], [1,1.5],x, 0);
       this.playerCells.push(cell);
     }
 
     for (let x = 0; x < pos; x++) {
       let cell = new Cell();
-      cell.init(sceneManager.scene, [offsetX+stepX*x, offsetY-stepY, 0], [1,1.5],x,1);
+      cell.init(sceneManager.scene, "enemy", [offsetX+stepX*x, offsetY-stepY, 0], [1,1.5],x, 1);
       this.enemyCells.push(cell);
     }
       

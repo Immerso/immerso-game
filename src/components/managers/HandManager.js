@@ -37,7 +37,7 @@ class HandManager {
     }
 
     init(hand, enemyHand) {
-      console.log(deckManager.cards);
+      console.log(hand);
       const enemyHandYPosition = 3;
       const cardXDistance = 1;
 
@@ -46,7 +46,7 @@ class HandManager {
 
       enemyHand.forEach((element, index) => {
         let card = new Card();
-        card.init(sceneManager.scene, "enemy", [(index + 0.5 - enemyHand.length / 2) * cardXDistance, enemyHandYPosition, 0], [1,1.5], uuidv4(), index%2?"experience":"power");
+        card.init(sceneManager.scene, "enemy", [(index + 0.5 - enemyHand.length / 2) * cardXDistance, enemyHandYPosition, 0], [1,1.5], element.id, element.label,"carta-detras.png");
         this.enemyHand.push(card);
       });
 

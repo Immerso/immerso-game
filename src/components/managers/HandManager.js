@@ -1,6 +1,7 @@
 import Card from '../three/card/Card';
 import sceneManager from './SceneManager';
 import { v4 as uuidv4 } from 'uuid';
+import deckManager from "./DeckManager";
 
 class HandManager {
     constructor() {
@@ -16,7 +17,7 @@ class HandManager {
     get hand() {
       return this._hand;
     }
-  
+
     set hand(value) {
       this._hand = value;
     }
@@ -24,7 +25,7 @@ class HandManager {
     get enemyHand() {
       return this._enemyHand;
     }
-  
+
     set enemyHand(value) {
       this._enemyHand = value;
     }
@@ -36,6 +37,7 @@ class HandManager {
     }
 
     init(hand, enemyHand) {
+      console.log(deckManager.cards);
       const enemyHandYPosition = 3;
       const cardXDistance = 1;
 
@@ -50,12 +52,12 @@ class HandManager {
 
       hand.forEach((element, index) => {
         let card = new Card();
-        card.init(sceneManager.scene, "player", [(index + 0.5 - hand.length / 2) * cardXDistance, this.playerHandYPosition, 0], [1,1.5], uuidv4(), index%2?"experience":"power");
+        card.init(sceneManager.scene, "player", [(index + 0.5 - hand.length / 2) * cardXDistance, this.playerHandYPosition, 0], [1,1.5],element.id, element.label, element.img);
         this.hand.push(card);
       });
     }
   }
-  
+
   const handManager = new HandManager();
-  
+
   export default handManager;

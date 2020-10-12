@@ -22,20 +22,21 @@ class GameManager {
         this.selectedCard = null;
         this.gameState = this.GAME_STATES.TAKE;
         this.gameUI = null;
+        this.playerPowerSpace = null;
       }
       return GameManager.instance;
     }
 
-  get selectedCard() {
-    return this._selectedCard;
-  }
-
-    set gameAPI(value) {
-      this._api = value;
+    get playerPowerSpace() {
+      return this._playerPowerSpace;
     }
 
-    get gameAPI() {
-      return this._api;
+    set playerPowerSpace(value) {
+      this._playerPowerSpace = value;
+    }
+
+    get selectedCard() {
+      return this._selectedCard;
     }
 
     set selectedCard(value) {
@@ -76,11 +77,11 @@ class GameManager {
       });
 
       if(deckManager.deck.deck) deckManager.deck.deck.visible = false;
+      if(this.playerPowerSpace.powerSpace) this.playerPowerSpace.powerSpace.visible = false;
 
     }
 
     show() {
-      deckManager.cards = JSON.parse(localStorage.getItem("game")).player.deck.cards || [];
       if(!this.initiated) {
         this.init();
       }
@@ -102,10 +103,13 @@ class GameManager {
         });
 
         if(deckManager.deck.deck) deckManager.deck.deck.visible = true;
+        if(this.playerPowerSpace.powerSpace) this.playerPowerSpace.powerSpace.visible = true;
       }
     }
 
     init() {
+        deckManager.cards = JSON.parse(localStorage.getItem("game")).player.deck.cards || [];
+        console.log(deckManager.cards);
         handManager.init(["1","2","3"],["1","2","3"]);
         deckManager.init();
         this.gameState = this.GAME_STATES.TAKE;

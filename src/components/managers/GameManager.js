@@ -109,8 +109,7 @@ class GameManager {
 
     init() {
         deckManager.cards = JSON.parse(localStorage.getItem("game")).player.deck.cards || [];
-        console.log(deckManager.cards);
-        handManager.init(["1","2","3"],["1","2","3"]);
+        handManager.init(deckManager.cards.slice(0,3),["1","2","3"]);
         deckManager.init();
         this.gameState = this.GAME_STATES.TAKE;
         boardManager.createBoard();

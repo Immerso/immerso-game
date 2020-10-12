@@ -124,7 +124,7 @@ class Card {
 
   createCard(scene, owner, texture, position, scale) {
     var material = new THREE.MeshBasicMaterial({ map: texture });
-      
+
     var geometry = new THREE.PlaneBufferGeometry(scale[0], scale[1], 1);
     var card = new THREE.Mesh(geometry, material);
     card.position.x = position[0];
@@ -151,27 +151,17 @@ class Card {
     this.loaded = true;
   }
 
-  init(scene, owner, position, scale, id, type = "experience") {
+  init(scene, owner, position, scale, id, type = "experience", img) {
     this.id = id;
     this.type = type;
-    let img = "";
-
-    switch (type) {
-      case "experience":
-        img = "card.jpeg";
-        break;
-      case "power":
-        img = "card.jpeg";
-        break;
-    }
 
     var loader = new THREE.TextureLoader();
     loader.load(
       img,
-      
+
       (texture) => this.createCard(scene, owner, texture, position, scale)
       ,
-      
+
       undefined,
 
       function ( err ) {

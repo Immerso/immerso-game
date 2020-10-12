@@ -49,6 +49,7 @@ export default class App extends React.Component {
         <Router>
           <InteractiveScene />
           <Menu />
+
           <div className="">
             <Switch>
               <Route exact path="/">

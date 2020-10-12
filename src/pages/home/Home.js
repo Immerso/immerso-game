@@ -6,8 +6,7 @@ const Home = () => {
       <div className="home">
         <div className="box">
         <h1> Tourist Challenger </h1>
-        <div className="buttons d-flex align-items-center flex-column">
-        </div>
+        
         </div>
       </div>
     );

@@ -6,8 +6,11 @@
     background-image: url('https://lh3.googleusercontent.com/wS2nT6R0gwsGpvszEM78Wu197Vgnr934KDbCFSHVZnV6UxR-WwDP7sLGr4_-cmZFax8kkeoGYkYSVNlMMPJ0qN1nKcjm0cNl_IFtQrmDxW5j15SROVDu_OVbnNf9DmRyjVI7oXsC2CEXIyqmzt9A4RwfkJbCOmkZS-4UwGyHwJRrkpytUt-Rbr_4w-DiwZETErOk6xj_s0rJ-qOKjrq1u_M4rgz8O-hIU696WU76Er1Bz7fdoFlv223rtudnOP7oN8EZV2VeywImIcuZXlpHHnlOvgizfF2VLP7OHjVtu1YryFZ32e7GqTzbMi9Fd2IuP20afJxqO2RRPSmrx4-oK8Fd6UpnPkBdmkE0ccK_cVvFwsOKWl2JG2fdw4NQaQd7iZaUN-luH7PtwrhFE6HismwaGYOVCVnSTICCoRD56YI7_Dd3JJJR2X10gOkDQ2s9e1jX-Y0_XckLjTLpUcA4vqeMvSEY_enHT0WZqjo8fp79BQr8F7W8KFv5ykX8hdckKEAAUe-Ehg-JacvgDiOWN_hSKAJsg6fGHuqk8WRe571JKdb-5ztKfq6-pfnB820d9KBEDVzOexMhs_90PlqxIOOBNjiWHOci6vgq9HZAdpUGu4rsNlTO6LKSOVchkFUgkIKIyWYoHHPmdMV8G23fnCkIc51jB_xV6j-367eJeBTvFzguW7yadv6Iy4pg=w843-h633-no?authuser=0');
     background-size: cover;
     overflow: unset;
+    border-style: groove;
+   
 
     .box{
+        padding-top: 5%;
         width:30%;
         height: 30%;
         margin-top: 10%;
@@ -20,22 +23,9 @@
     }
   
 
-   button{
-    opacity: 1;
-    width: 50%;
-    height: 4em;
-    display:inline-block;
-    margin: 1%;
-    margin-top: 10%;
-    background-color: #E8DC38 ;
-    color: black;
-    border-style: outset;
-    border-radius: 1em;
-    border-color: #E8DC38;
-   }
-
    h1{
-    opacity: 1;
+       
+       opacity: 1;
        color: #ffffff;
        text-align: center;
    }

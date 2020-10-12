@@ -3,12 +3,8 @@ import "./Search.scss";
 import {GameAPI} from "../../api/Game";
 import App from "../../App";
 import {useHistory} from "react-router-dom";
-<<<<<<< HEAD
-import { Color } from "three";
-=======
 import Game from "../game/Game";
 import gameManager from "../../components/managers/GameManager";
->>>>>>> 4c8c8e28d01076afd5098b0893ab90351cdb4931
 
 const Search = () => {
   let [foundMatch, setFoundMatch] = useState(false);
@@ -46,11 +42,16 @@ const Search = () => {
     }
   }, ["foundMatch"]);
 
+  const removeLoader=()=>{
+    document.getElementById("mytext").style.display = "none";
+
+  }
+
   return (
-    <div className="search">
+    <div className="search" id="mytext">
       <p style={{top: '0', position: 'absolute',aling: 'center'}} > Esperando otro jugador...</p>
       {
-        foundMatch ? <Game/> : <div/>
+        foundMatch ? ( removeLoader(), <Game/>)  : <div className = "loader"  />
       }
     </div>
   );

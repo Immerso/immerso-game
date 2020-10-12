@@ -18,11 +18,21 @@ class GameManager {
         this.handManager = handManager;
         this.deckManager = deckManager;
         this.sceneManager = sceneManager;
+        this._api = null;
         this.selectedCard = null;
         this.gameState = this.GAME_STATES.TAKE;
         this.gameUI = null;
+        this.playerPowerSpace = null;
       }
       return GameManager.instance;
+    }
+
+    get playerPowerSpace() {
+      return this._playerPowerSpace;
+    }
+
+    set playerPowerSpace(value) {
+      this._playerPowerSpace = value;
     }
 
     get selectedCard() {
@@ -67,6 +77,7 @@ class GameManager {
       });
 
       if(deckManager.deck.deck) deckManager.deck.deck.visible = false;
+      if(this.playerPowerSpace.powerSpace) this.playerPowerSpace.powerSpace.visible = false;
 
     }
 
@@ -78,7 +89,7 @@ class GameManager {
         handManager.hand.forEach(element => {
           if(element.card) element.card.visible = true;
         });
-  
+
         handManager.enemyHand.forEach(element => {
           if(element.card) element.card.visible = true;
         });
@@ -90,12 +101,15 @@ class GameManager {
         boardManager.enemyCells.forEach(element => {
           if(element.cell) element.cell.visible = true;
         });
-  
+
         if(deckManager.deck.deck) deckManager.deck.deck.visible = true;
+        if(this.playerPowerSpace.powerSpace) this.playerPowerSpace.powerSpace.visible = true;
       }
     }
 
     init() {
+        deckManager.cards = JSON.parse(localStorage.getItem("game")).player.deck.cards || [];
+        console.log(deckManager.cards);
         handManager.init(["1","2","3"],["1","2","3"]);
         deckManager.init();
         this.gameState = this.GAME_STATES.TAKE;
@@ -122,7 +136,7 @@ class GameManager {
       this.gameUI.setGameState(this.gameState);
     }
   }
-  
+
   const gameManager = new GameManager();
-  
+
   export default gameManager;

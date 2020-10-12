@@ -3,7 +3,7 @@ import gameManager from "../../components/managers/GameManager";
 import GameUI from "../../components/ui/game/GameUI";
 import "./Game.scss";
 
-const Game = () => {
+const Game = (props) => {
   useEffect(() => {
     gameManager.show();
 
@@ -14,7 +14,7 @@ const Game = () => {
 
   return (
     <div className="game">
-      <GameUI />
+      <GameUI/>
     </div>
   );
 };

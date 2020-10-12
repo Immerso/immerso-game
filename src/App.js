@@ -26,7 +26,8 @@ export default class App extends React.Component {
     let user = JSON.parse(localStorage.getItem("user"));
     console.log(user);
     if(user === null){
-      userName = window.prompt("Tu nombre de usuario: ");
+      if(window.location.pathname === "/")
+        userName = window.prompt("Tu nombre de usuario: ");
       api.createRandomUser(userName)
         .then((data) => {
           console.log(data);
@@ -56,9 +57,9 @@ export default class App extends React.Component {
               <Route exact path="/search">
                 <Search />
               </Route>
-              <Route exact path="/game">
-                <Game />
-              </Route>
+              {/*<Route exact path="/game">*/}
+              {/*  <Game />*/}
+              {/*</Route>*/}
               <Route exact path="/options">
                 <Options />
               </Route>

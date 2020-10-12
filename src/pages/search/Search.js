@@ -3,7 +3,12 @@ import "./Search.scss";
 import {GameAPI} from "../../api/Game";
 import App from "../../App";
 import {useHistory} from "react-router-dom";
+<<<<<<< HEAD
 import { Color } from "three";
+=======
+import Game from "../game/Game";
+import gameManager from "../../components/managers/GameManager";
+>>>>>>> 4c8c8e28d01076afd5098b0893ab90351cdb4931
 
 const Search = () => {
   let [foundMatch, setFoundMatch] = useState(false);
@@ -31,7 +36,7 @@ const Search = () => {
             setOpponent(parsed.opponent);
             setFoundMatch(true);
             localStorage.setItem("game",JSON.stringify(parsed))
-            window.location.href="/game";
+            gameManager.gameAPI = api;
           }
         },
         (error) => {
@@ -45,7 +50,7 @@ const Search = () => {
     <div className="search">
       <p style={{top: '0', position: 'absolute',aling: 'center'}} > Esperando otro jugador...</p>
       {
-        foundMatch ? <div dangerouslySetInnerHTML={{__html: "Opponent found " + opponent.name}} /> : <div className="loader"/>
+        foundMatch ? <Game/> : <div/>
       }
     </div>
   );

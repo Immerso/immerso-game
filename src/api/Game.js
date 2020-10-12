@@ -4,8 +4,8 @@ import axios from "axios";
 export class GameAPI {
 
   constructor() {
-    this.base_url = "http://localhost:8000";
-    this.base_ws_url = "ws://localhost:8000";
+    this.base_url = "https://dry-temple-99567.herokuapp.com";
+    this.base_ws_url = "wss://dry-temple-99567.herokuapp.com";
   }
 
   async createRandomUser(username){

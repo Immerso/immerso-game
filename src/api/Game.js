@@ -27,6 +27,9 @@ export class GameAPI {
     this.fullUrl = `${this.base_ws_url}/ws/${this.userId}/`;
     try {
       this.client = new W3CWebSocket(this.fullUrl);
+      this.gameCommunicationSend(
+        {search: true, type: "action"}
+      );
       this.interval = setInterval(() => {
         this.gameCommunicationSend(
           {search: true, type: "action"}

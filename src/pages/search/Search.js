@@ -29,6 +29,8 @@ const Search = () => {
             console.log("found game");
             setOpponent(parsed.opponent);
             setFoundMatch(true);
+            localStorage.setItem("game",JSON.stringify(parsed))
+            window.location.href="/game";
           }
         },
         (error) => {

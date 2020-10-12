@@ -12,14 +12,33 @@ class BoardManager {
     return BoardManager.instance;
   }
 
-  get cells() {
-    return this._cells;
+  get board() {
+    return this._board;
   }
 
-  set cells(value) {
-    this._cells = value;
+  set board(value) {
+    this._board = value;
   }
 
+  deleteCard(id){
+    for (let i = 0; i < this.board.length; i++) {
+      if(this.board[i].card!=null){
+        let cardId = this.board[i].card.id;
+        if(cardId===id){
+          sceneManager.scene.remove(this.board[i].card.card);
+          this.board[i].card=null;
+        }
+      }  
+    }
+  }
+
+  CheckWinState(){
+    let won=true;
+    for (let i = 0; i < this.board.length; i++) {
+      won &= this.board[i].card!=null
+    }
+    return won;
+  }
   createBoard(){
     const positions= 5;
     const offsetX=-2.2;

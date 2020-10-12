@@ -28,15 +28,28 @@ class BoardManager {
     this._enemyCells = value;
   }
 
-  deleteCard(id){
-    for (let i = 0; i < this.board.length; i++) {
-      if(this.board[i].card!=null){
-        let cardId = this.board[i].card.id;
-        if(cardId===id){
-          sceneManager.scene.remove(this.board[i].card.card);
-          this.board[i].card=null;
-        }
-      }  
+  deleteCard(id, owner){
+    if(owner === "player") {
+      for (let i = 0; i < this.playerCells.length; i++) {
+        if(this.playerCells[i].card!=null){
+          let cardId = this.playerCells[i].card.id;
+          if(cardId===id){
+            sceneManager.scene.remove(this.playerCells[i].card.card);
+            this.playerCells[i].card=null;
+          }
+        }  
+      }
+    }
+    else if(owner === "enemy") {
+      for (let i = 0; i < this.enemyCells.length; i++) {
+        if(this.enemyCells[i].card!=null){
+          let cardId = this.enemyCells[i].card.id;
+          if(cardId===id){
+            sceneManager.scene.remove(this.enemyCells[i].card.card);
+            this.enemyCells[i].card=null;
+          }
+        }  
+      }
     }
   }
 

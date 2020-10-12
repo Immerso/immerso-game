@@ -106,10 +106,17 @@ class GameManager {
         if(this.playerPowerSpace.powerSpace) this.playerPowerSpace.powerSpace.visible = true;
       }
     }
+     getRandomArbitrary(min, max) {
+      return Math.floor(Math.random() * (max - min) + min);
+    }
 
     init() {
         deckManager.cards = JSON.parse(localStorage.getItem("game")).player.deck.cards || [];
-        handManager.init(deckManager.cards.slice(0,3),["1","2","3"]);
+        let n1=this.getRandomArbitrary(0,deckManager.cards.length);
+        let n2=this.getRandomArbitrary(0,deckManager.cards.length);
+        let n3=this.getRandomArbitrary(0,deckManager.cards.length);
+        console.log(n1,n2,n3);
+        handManager.init([deckManager.cards[n1],deckManager.cards[n2],deckManager.cards[n3]],["1","2","3"]);
         deckManager.init();
         this.gameState = this.GAME_STATES.TAKE;
         boardManager.createBoard();

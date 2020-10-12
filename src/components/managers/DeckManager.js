@@ -35,7 +35,7 @@ class DeckManager {
       const deck = new Deck();
       deck.init(sceneManager.scene);
       this.deck = deck;
-      this.cards = ["","",""];
+      //this.cards = ["","",""];
     }
 
     grabCard() {
@@ -45,6 +45,7 @@ class DeckManager {
         handManager.hand.push(card);
         handManager.reorderHand();
         gameManager.nextState();
+        this.next_card_index++;
       }
     }
 

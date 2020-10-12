@@ -33,7 +33,7 @@ class Deck {
   init(scene) {
     var loader = new THREE.TextureLoader();
     loader.load(
-      "card.jpeg",
+      "carta-detras.png",
       
       (texture) => this.createDeck(scene, texture)
       ,

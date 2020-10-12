@@ -67,6 +67,7 @@ class GameManager {
     }
 
     show() {
+      deckManager.cards = JSON.parse(localStorage.getItem("game")).player.deck.cards || [];
       if(!this.initiated) {
         this.init();
       }
@@ -74,7 +75,7 @@ class GameManager {
         handManager.hand.forEach(element => {
           if(element.card) element.card.visible = true;
         });
-  
+
         handManager.enemyHand.forEach(element => {
           if(element.card) element.card.visible = true;
         });
@@ -82,7 +83,7 @@ class GameManager {
         boardManager.cells.forEach(element => {
           if(element.cell) element.cell.visible = true;
         });
-  
+
         if(deckManager.deck.deck) deckManager.deck.deck.visible = true;
       }
     }
@@ -113,7 +114,7 @@ class GameManager {
       this.gameUI.setGameState(this.gameState);
     }
   }
-  
+
   const gameManager = new GameManager();
-  
+
   export default gameManager;
